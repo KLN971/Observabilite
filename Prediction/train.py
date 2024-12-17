@@ -66,19 +66,19 @@ def process_data(file_path, model_name_suffix=""):
         accuracy = accuracy_score(y_true, rf_val_pred)
         precision = precision_score(y_true, rf_val_pred)
         recall = recall_score(y_true, rf_val_pred)
-        auc = roc_auc_score(y_true, y_pred)
+        #auc = roc_auc_score(y_true, y_pred)
 
         print(f"The optimal threshold for {model_name} is {threshold}")
         print(f"Performance of {model_name}:")
         print(f"Accuracy: {accuracy:.4f}")
         print(f"Precision: {precision:.4f}")
         print(f"Recall: {recall:.4f}")
-        print(f"AUC: {auc:.4f}")
+        #print(f"AUC: {auc:.4f}")
         print('-' * 30)
 
     evaluate_model(y_test, rf_pred, f"Random Forest {model_name_suffix}", threshold=0.3)
     evaluate_model(y_test, lr_pred, f"Logistic Regression {model_name_suffix}",threshold=0.3)
 
-#process_data('template_counts_error_detection.csv', model_name_suffix="error_detection")
+process_data('template_counts_error_detection.csv', model_name_suffix="error_detection")
 
 process_data('template_counts_error_prediction.csv', model_name_suffix="error_prediction")
